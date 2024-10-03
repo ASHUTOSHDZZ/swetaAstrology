@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup&register</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+ <body>
+        
+    <div class="body">
+        
+<div class="containner">
+    <div class="form signup">
+     <h2>Registration</h2>
+     <div class="inputbox">
+        <input type="text" required="required">
+        <i class="fa-solid fa-user"></i>
+        <span>Your Name</span>
+     </div>
+     <div class="inputbox">
+        <input type="text" required="required">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Your Phone Number</span>
+     </div>
+     <div class="inputbox">
+        <input type="time" required="required">
+        <i class="fa-solid fa-lock"></i>
+        <span>Birth Time</span>
+     </div>
+     <div class="inputbox">
+        <input type="text" required="required">
+        <i class="fa-solid fa-lock"></i>
+        <span>zodiacSign</span>
+     </div>                 
+     <div class="inputbox">
+        <a href="indexa.html">
+            <button class="buttona">Go Predict my Future</button>
+        </a>
+        
+        </div>
+        <p>Alredy a member <a href="login.html" class="login">Login</a></p>
+     </div>
+
+
+    
+     <div class="form signin">
+        <h2>Signin</h2>
+     <div class="inputbox">
+        <input type="text" required="required">
+        <i class="fa-solid fa-user"></i>
+        <span>Username</span>
+     </div>
+     <div class="inputbox">
+        <input type="password" required="required">
+        <i class="fa-solid fa-lock"></i>
+        <span> paassword</span>
+     </div>
+     <div class="inputbox">
+        <input type="submit" value="Login">
+        </div>
+        <p>Not Registered <a href="" class="create">Creat an Account</a></p>
+    </div>
+
+
+
+   
+
+</div>
+
+
+
+
+
+</div>
+    <div class="foter">
+   
+        <p class="copyright">@copyright 2023 -MEMS BALASORE</p>
+        <p>developed by Ashu</p>
+     </div>
+
+
+<style>
+    .body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #163a61;
+    }
+.containner{
+    padding: 40px;
+    border-radius: 20px;
+    border: 8px solid #0a0e49;
+    
+    box-shadow: 5px 5px 8px 8px rgb(48, 36, 214);
+}
+.containner .form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.containner .form.signin,
+.containner.signinform .form .signup
+{
+    display: none;
+}
+.containner .signinform .form.signin{
+    display: flex;
+}
+
+
+.containner .form h2{
+    color: antiquewhite;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+
+}
+.containner .form .inputbox{
+    position: relative;
+    width: 300px;
+}
+
+.containner .form .inputbox input{
+    padding: 12px 10px 12px 48px;
+    border: none;
+    width: 100%;
+    background: #163a61;
+    border: 1px solid rgb(12, 12, 78);
+    color: aliceblue;
+    font-weight: 300;
+    border-radius: 25px;
+    font-size: 1em;
+    box-shadow: 5px 5px 8px 8px rgb(48, 36, 214);
+    
+    transition: 0.5s;
+    outline: none;
+}
+
+.containner .form .inputbox span{
+    position: absolute;
+    left: 0;
+    padding:12px 10px 12px 48px ;
+    pointer-events: none;
+    font-size: 1em;
+    font-weight: 300;
+    transition: 0.5s;
+    letter-spacing: 0.05em;
+    color: #6fa7e4;
+}
+
+.containner .form .inputbox input:valid ~ span,
+.containner .form .inputbox input:focus ~ span
+{
+    color: rgb(49, 116, 192);
+    border: 1px solid aqua;
+    background: #163a61;
+    transform: translateX(25px) translateY(-7px);
+    font-size: 0.6em;
+    padding: 0 8px;
+    border-radius: 10px;
+    letter-spacing: 0.1em;
+
+
+}
+
+.containner .form .inputbox input:valid ,
+.containner .form .inputbox input:focus {
+    border: 1px solid aqua;
+}
+
+.containner .form .inputbox i{
+    position: absolute;
+    top: 15px;
+    left: 16px;
+    width: 25px;
+    padding: 2px 0;
+    padding-right: 8px;
+    color: aqua;
+    border-right: 1px solid aqua;
+}
+
+.containner .form .inputbox input[type="submit"]{
+    background: #308ef3;
+    color: #0a0e49;
+    padding: 10px 0;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: inset-5px -5px -5px 15px rgb(17, 17, 58),
+    inset 5px 15px rgb(8, 8, 82);
+}
+.containner .form .inputbox input[type="submit"]:hover{
+    background: #073363;
+    color: #d9dbee;
+}
+.containner .form p{
+    color: aliceblue;
+    font-size: 0.75em;
+    font-weight: 300;
+}
+
+.containner .form p a{
+font-weight: 500;
+color: aliceblue;
+}
+.buttona{
+    padding: 13px;
+    color: #308ef3;
+    border-radius: 8px;
+    background-color: #201123;
+    font-size: 18px;
+}
+@media only screen and (max-width: 673px){
+    .containner{
+        width: 95%;
+    }
+}
+
+
+
+</style>
+
+<script>
+
+   let login = document.querySelector('.login');
+   let creat = document.querySelector('.login');
+   let containner = document.querySelector('.containner');
+
+
+   login.onclick = function(){
+    containner.classlist.add('signinform');
+   }
+
+   create.onclick = function(){
+    containner.classlist.remove('signinform');
+   }
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #ff0066;
+        }
+        button {
+            background-color: #ff0066;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #cc0052;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Love Calculator</h2>
+        <input type="text" id="name1" placeholder="Your Name"><br><br>
+        <input type="text" id="name2" placeholder="Partner's Name"><br><br>
+        <button onclick="calculateLove()">Calculate Love</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculateLove() {
+            var name1 = document.getElementById("name1").value;
+            var name2 = document.getElementById("name2").value;
+
+            if (name1 === "" || name2 === "") {
+                alert("Please enter both names!");
+                return;
+            }
+
+            // Generate a random love percentage
+            var loveScore = Math.floor(Math.random() * 100) + 1;
+
+            document.getElementById("result").innerText = name1 + " and " + name2 + " have a love compatibility of " + loveScore + "%!";
+        }
+    </script>
+
+</body>
+</html>

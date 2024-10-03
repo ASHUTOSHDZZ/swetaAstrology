@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrology Prediction</title>
+    <style>
+
+.container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 900px;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #ff0066;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #ff0066;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #cc0052;
+        }
+
+        .prediction, #result {
+            font-size: 18px;
+            color: #333;
+            margin-top: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #e96f9a, #0f69de);
+        }
+
+        .form-container {
+            background: linear-gradient(135deg, #4f4f7f, #9267f2);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input[type="date"] {
+            width: 100%;
+            padding: 12px 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #fff;
+            color: #4f4f7f;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .prediction {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .form-container {
+                width: 300px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+
+
+
+        
+
+
+
+    </style>
+</head>
+
+
+<body>
+   
+    <div class="container">
+        <!-- Zodiac Form -->
+        <div class="form-container">
+            <h2>Find Your Zodiac Sign & Prediction</h2>
+            <input type="date" id="dob" placeholder="Enter your date of birth">
+            <button onclick="showZodiacAndPrediction()">Get Prediction</button>
+            <div id="result"></div>
+            <div class="prediction" id="prediction"></div>
+        </div>
+
+        <!-- Love Calculator -->
+        <div class="form-container">
+            <h2>Love Calculator</h2>
+            <input type="text" id="name1" placeholder="Your Name"><br><br>
+            <input type="text" id="name2" placeholder="Partner's Name"><br><br>
+            <button onclick="calculateLove()">Calculate Love</button>
+            <p id="loveResult"></p>
+        </div>
+    </div>
+
+    <script>
+      
+
+      //function to get love calculate 
+        function calculateLove() {
+            var name1 = document.getElementById("name1").value;
+            var name2 = document.getElementById("name2").value;
+
+            if (name1 === "" || name2 === "") {
+                alert("Please enter both names!");
+                return;
+            }
+
+            // Generate a random love percentage
+            var loveScore = Math.floor(Math.random() * 100) + 1;
+
+            document.getElementById("result").innerText = name1 + " and " + name2 + " have a love compatibility of " + loveScore + "%!";
+        }
+    
+
+
+
+
+
+
+        // Function to get zodiac sign
+        function getZodiacSign(day, month) {
+            if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
+                return "Very Lucky";
+            } else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+                return "Very Powerfull";
+            } else if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
+                return "Very Inteligent";
+            } else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
+                return "Very Kind";
+            } else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+                return "Very Lovery";
+            } else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
+                return "Very smart ";
+            } else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
+                return "Very Powerfull";
+            } else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
+                return "Very Lovelyest";
+            } else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
+                return "Very lovely";
+            } else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
+                return "Very DAngerious";
+            } else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
+                return "Very Attractive";
+            } else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
+                return "Open Minded";
+            }
+        }
+
+        // Function to get a prediction based on day of the year
+        function getPrediction(dayOfYear) {
+    if (dayOfYear === 1) {
+        return `Career: Start the year strong! Set new goals and make progress. This will set the tone for the year.
+Love: Your charm will attract positive attention today. Be open to new romantic experiences.
+Life: Focus on setting realistic goals for the year. Start with small, achievable steps.`;
+
+    } else if (dayOfYear === 2) {
+        return `Career: Be prepared for new responsibilities. Show your leadership skills.
+Love: Communication will strengthen your relationship today. Share your feelings openly.
+Life: Invest time in personal development. It’s a great day for learning something new.`;
+
+    } else if (dayOfYear === 3) {
+        return `Career: Today is the day for creativity. Use your innovative ideas to solve problems.
+Love: A surprise may come your way. Embrace it with an open heart.
+Life: Take time for self-care. A day of relaxation will rejuvenate your spirit.`;
+
+    } else if (dayOfYear === 4) {
+        return `Career: Networking opportunities will arise today. Expand your professional connections.
+Love: Plan something special for a loved one. Show your appreciation in a unique way.
+Life: Step outside of your comfort zone. Try something adventurous.`;
+
+    } else if (dayOfYear === 5) {
+        return `Career: A challenging task may require your attention. Take it one step at a time.
+Love: Romance is on the horizon. Keep your eyes open for meaningful connections.
+Life: Focus on balance. Make sure your work and personal life are in harmony.`;
+
+    } else if (dayOfYear === 6) {
+        return `Career: Financial gains are possible today. Make wise decisions about investments.
+Love: An old friend may reappear, sparking a new connection.
+Life: Spend time with loved ones. Strengthening family bonds will bring joy.`;
+
+    } else if (dayOfYear === 7) {
+        return `Career: An opportunity for a promotion could arise soon. Stay focused and prepared.
+Love: Your relationship may reach a deeper level today. Have an honest conversation.
+Life: Take time for introspection. Journaling can help you gain clarity on your next steps.`;
+
+    } else if (dayOfYear === 8) {
+        return `Career: Collaborating with a team will bring success today. Work on your communication skills.
+Love: A romantic surprise could come your way today. Be open to spontaneous moments.
+Life: Focus on your health today. Small changes can have a big impact on your well-being.`;
+
+    } else if (dayOfYear === 9) {
+        return `Career: A colleague may seek your advice. Offer your support, and your leadership will shine.
+Love: Love could take an unexpected turn today. Be ready for something new.
+Life: Take a break from the hustle. Enjoy the simple pleasures of life today.`;
+
+    } else if (dayOfYear === 10) {
+        return `Career: A breakthrough in a project will boost your confidence. Keep pushing forward.
+Love: Strengthen your emotional connection by being vulnerable with your partner.
+Life: Organize your space. Decluttering will help you feel more productive.`;
+
+    } else if (dayOfYear === 11) {
+        return `Career: You may encounter a challenge today, but your problem-solving skills will help you overcome it.
+Love: An honest conversation will help clear any misunderstandings in your relationship.
+Life: Focus on your personal goals. Today is a great day for planning your future.`;
+
+    } else if (dayOfYear === 12) {
+        return `Career: A new opportunity could arise. Be open to taking on more responsibilities.
+Love: A kind gesture could deepen your bond with someone special today.
+Life: Take time to reflect on your recent accomplishments and set new goals.`;
+
+    } else if (dayOfYear === 13) {
+        return `Career: Your dedication will be recognized by your superiors. Keep up the hard work.
+Love: Love may take an unexpected direction. Embrace change with an open mind.
+Life: Focus on self-care today. Recharge before tackling new challenges.`;
+
+    } else if (dayOfYear === 14) {
+        return `Career: A successful meeting or presentation will boost your confidence.
+Love: Romance is in the air. Plan something thoughtful for your partner.
+Life: Seek out new knowledge. Learning something new will expand your perspective.`;
+
+    } else if (dayOfYear === 15) {
+        return `Career: Your leadership skills will shine today. Step up and take charge of a situation.
+Love: A surprise gesture from a loved one will warm your heart today.
+Life: Focus on creating balance in your life. Too much of anything can be overwhelming.`;
+
+    } else if (dayOfYear === 16) {
+        return `Career: Financial success is within reach. Be mindful of your spending.
+Love: A heartfelt conversation with your partner will bring you closer.
+Life: Take time to enjoy the little things today. Happiness is often found in small moments.`;
+
+    } else if (dayOfYear === 17) {
+        return `Career: A major project will be completed soon. Your hard work will be rewarded.
+Love: You may reconnect with an old flame or deepen your current relationship.
+Life: Focus on physical activity. A healthy body leads to a healthy mind.`;
+
+    } else if (dayOfYear === 18) {
+        return `Career: A new career path may present itself today. Be open to exploring different opportunities.
+Love: You may feel an emotional shift in your relationship. Embrace vulnerability.
+Life: Take time to reflect on your personal growth. You’re further along than you think.`;
+
+    } else if (dayOfYear === 19) {
+        return `Career: Challenges at work may arise, but your persistence will lead to success.
+Love: A romantic surprise will add excitement to your day.
+Life: Stay grounded today. Focus on mindfulness and living in the present moment.`;
+
+    } else if (dayOfYear === 20) {
+        return `Career: A new opportunity may come your way today. Seize the moment and make the most of it.
+Love: Plan a special date with your partner to strengthen your bond.
+Life: Focus on organization. Clear your mind by decluttering your surroundings.`;
+
+    } else if (dayOfYear === 21) {
+        return `Career: Your creativity will be your greatest asset today. Use it to find innovative solutions.
+Love: An important conversation with a loved one will help resolve misunderstandings.
+Life: Take a step back and appreciate how far you've come in your personal journey.`;
+
+    } else if (dayOfYear === 22) {
+        return `Career: Collaboration with colleagues will bring success. Work together to achieve your goals.
+Love: A new romantic interest may enter your life. Be open to new possibilities.
+Life: Focus on gratitude today. Reflect on the things that bring joy and fulfillment.`;
+
+    } else if (dayOfYear === 23) {
+        return `Career: Financial rewards are on the horizon. Keep working hard and stay focused on your goals.
+Love: Show appreciation for your partner today. Small gestures will strengthen your bond.
+Life: Focus on self-care and wellness today. Your health should be a priority.`;
+
+    } else if (dayOfYear === 24) {
+        return `Career: A successful collaboration will boost your career. Keep fostering strong partnerships.
+Love: A deep conversation with your partner will strengthen your emotional connection.
+Life: Set aside time for relaxation and leisure today. It's important to recharge.`;
+
+    } else if (dayOfYear === 25) {
+        return `Career: A new challenge will test your skills. Rise to the occasion and prove your worth.
+Love: Love may take an unexpected turn today. Be open to change.
+Life: Focus on personal development. Take time to learn something new today.`;
+
+    // Continue adding more unique predictions for each day of the year
+
+    // End the year with predictions for day 365
+    }else if (dayOfYear === 26) {
+    return `Career: Stay proactive in your tasks. Your hard work will soon pay off.
+Love: Today is a great day to express your feelings. Don’t hold back.
+Life: Take some time to indulge in your hobbies. They can bring you peace and happiness.`;
+
+} else if (dayOfYear === 27) {
+    return `Career: Be open to feedback. It will help you improve and grow.
+Love: A romantic gesture will surprise your partner today.
+Life: Reconnect with nature. A walk outside can clear your mind and rejuvenate your spirit.`;
+
+} else if (dayOfYear === 28) {
+    return `Career: Seek collaboration on projects. Teamwork can lead to greater success.
+Love: Discuss future plans with your partner. Sharing your dreams will strengthen your bond.
+Life: Prioritize your mental health today. Engage in activities that promote relaxation and mindfulness.`;
+
+} else if (dayOfYear === 29) {
+    return `Career: New opportunities may arise unexpectedly. Be ready to take the leap.
+Love: A heartfelt conversation could lead to deeper understanding with a loved one.
+Life: Embrace change. It can lead to exciting new paths and adventures.`;
+
+} else if (dayOfYear === 30) {
+    return `Career: Take initiative in your work. Your leadership can inspire others.
+Love: Surprise your partner with a thoughtful gift or gesture.
+Life: Reflect on your progress this month and set intentions for the next.`;
+
+} else if (dayOfYear === 31) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Communicate openly with your partner. Honesty is key to a strong relationship.
+Life: Spend some time with friends or family. Social connections can uplift your spirit.`;
+
+} else if (dayOfYear === 32) {
+    return `Career: Don’t be afraid to share your ideas in meetings. Your perspective is valuable.
+Love: Plan a fun date night to reignite the spark in your relationship.
+Life: Take a moment to appreciate the small joys in life. Gratitude is powerful.`;
+
+} else if (dayOfYear === 33) {
+    return `Career: Keep an eye on your finances. Budgeting can prevent future stress.
+Love: A spontaneous adventure could bring excitement to your relationship.
+Life: Explore new activities or hobbies. Stepping outside your comfort zone can be rewarding.`;
+
+} else if (dayOfYear === 34) {
+    return `Career: A mentor may provide you with valuable advice. Be open to learning from them.
+Love: A small act of kindness will strengthen your connection with a partner.
+Life: Focus on self-reflection. Understand your emotions and where you want to go next.`;
+
+} else if (dayOfYear === 35) {
+    return `Career: You may face a challenge at work. Stay calm and tackle it systematically.
+Love: Take time to listen to your partner’s needs. Understanding each other is vital.
+Life: Engage in a creative project. Expressing yourself can be therapeutic.`;
+
+} else if (dayOfYear === 36) {
+    return `Career: Collaborate with others for better results. Two heads are better than one.
+Love: Enjoy a quiet evening with your partner. Sometimes, quality time is all you need.
+Life: Start a journal. Writing your thoughts can provide clarity and peace.`;
+
+} else if (dayOfYear === 37) {
+    return `Career: Today, focus on completing pending tasks. Finishing what you start brings satisfaction.
+Love: Share your dreams with your partner. It can deepen your bond.
+Life: Consider starting a new health regimen. Taking care of your body is important.`;
+
+} else if (dayOfYear === 38) {
+    return `Career: Seek out new challenges at work. They can help you grow.
+Love: Today is ideal for expressing your love and appreciation. Small gestures matter.
+Life: Spend some time volunteering. Helping others can be incredibly fulfilling.`;
+
+} else if (dayOfYear === 39) {
+    return `Career: Networking will open new doors. Reach out to colleagues and professionals.
+Love: A heartfelt letter or note will make your partner's day.
+Life: Take a break from your routine. A change of scenery can provide fresh perspective.`;
+
+} else if (dayOfYear === 40) {
+    return `Career: Stay organized. A clear workspace leads to a clear mind.
+Love: Show appreciation for your loved ones. Kind words can brighten someone’s day.
+Life: Embrace a new book or podcast. Learning something new can inspire you.`;
+
+} else if (dayOfYear === 41) {
+    return `Career: Your efforts may soon be recognized. Keep working hard.
+Love: An unexpected compliment can enhance your relationship today.
+Life: Dedicate time to a personal project. Passion projects fuel creativity.`;
+
+} else if (dayOfYear === 42) {
+    return `Career: Avoid office gossip. Staying positive will serve you better.
+Love: Take your partner out for a spontaneous outing. Break the routine!
+Life: Practice mindfulness or meditation today. Centering yourself brings clarity.`;
+
+} else if (dayOfYear === 43) {
+    return `Career: Work on enhancing your skills. Investing in yourself pays off.
+Love: Plan a surprise date for your partner. Unplanned moments can be the best.
+Life: Reflect on your goals and aspirations. Are you moving towards what you truly want?`;
+
+} else if (dayOfYear === 44) {
+    return `Career: New projects may come your way. Embrace the change and stay proactive.
+Love: Deepen your emotional intimacy through meaningful conversations.
+Life: Spend some time outdoors. Nature has a way of revitalizing your spirit.`;
+
+} else if (dayOfYear === 45) {
+    return `Career: Your creativity will shine in problem-solving situations.
+Love: Spend quality time with friends. Good company lifts your spirits.
+Life: Try a new exercise or sport. Physical activity can enhance your mood.`;
+
+} else if (dayOfYear === 46) {
+    return `Career: Be open to collaboration. Team efforts can lead to better results.
+Love: Express your feelings honestly. Vulnerability brings you closer.
+Life: Invest time in a hobby that brings you joy. Your passions matter.`;
+
+} else if (dayOfYear === 47) {
+    return `Career: Don’t shy away from challenges. Facing them head-on will make you stronger.
+Love: A date night at home can be just as special as going out.
+Life: Engage in a relaxing activity, like yoga or meditation. Balance is key.`;
+
+} else if (dayOfYear === 48) {
+    return `Career: Focus on time management. Being organized will enhance productivity.
+Love: Remember the small things. They often mean the most in relationships.
+Life: Explore a new cuisine or recipe. Cooking can be a fun way to unwind.`;
+
+} else if (dayOfYear === 49) {
+    return `Career: Your hard work is about to pay off. Stay committed to your goals.
+Love: Spend time reminiscing with your partner about cherished memories.
+Life: Take time for self-care today. Prioritize your mental and emotional well-being.`;
+
+} else if (dayOfYear === 50) {
+    return `Career: Network with others in your field. Building connections is crucial.
+Love: Be attentive to your partner’s needs. Active listening strengthens relationships.
+Life: Revisit your goals. Are they still in line with your aspirations?`;
+
+} else if (dayOfYear === 51) {
+    return `Career: A mentor could offer valuable advice. Don’t hesitate to seek guidance.
+Love: A surprise outing will bring joy to your relationship.
+Life: Start a new book or film. Engaging stories can inspire your imagination.`;
+
+} else if (dayOfYear === 52) {
+    return `Career: Celebrate small victories. Every step forward counts.
+Love: Rekindle romance with a heartfelt note or gesture.
+Life: Spend some time in nature. It can be grounding and refreshing.`;
+
+} else if (dayOfYear === 53) {
+    return `Career: Stay focused on your tasks. Distractions can hinder progress.
+Love: Make time for a fun date. Laughter strengthens connections.
+Life: Reflect on your achievements this week. Acknowledging progress is important.`;
+
+} else if (dayOfYear === 54) {
+    return `Career: Embrace new challenges at work. They can lead to growth.
+Love: An open conversation will clear any misunderstandings.
+Life: Engage in a creative outlet. Expressing yourself is therapeutic.`;
+
+} else if (dayOfYear === 55) {
+    return `Career: Your efforts will soon be recognized. Keep pushing forward.
+Love: Spend quality time with family. Bonds with loved ones are important.
+Life: Dedicate time to a personal project that brings you joy.`;
+
+} else if (dayOfYear === 56) {
+    return `Career: Seek feedback from peers. Constructive criticism helps you improve.
+Love: A spontaneous outing with your partner can be refreshing.
+Life: Spend time reflecting on what brings you happiness.`;
+
+} else if (dayOfYear === 57) {
+    return `Career: Stay organized to avoid unnecessary stress. 
+Love: A thoughtful gesture will brighten your partner's day.
+Life: Take time to appreciate the little things. Joy often lies in simplicity.`;
+
+} else if (dayOfYear === 58) {
+    return `Career: Networking could lead to unexpected opportunities. Be open to new connections.
+Love: Plan a romantic surprise for your partner.
+Life: Consider starting a gratitude journal. Recognizing what you are thankful for can improve your outlook.`;
+
+} else if (dayOfYear === 59) {
+    return `Career: Stay focused on your long-term goals. Patience is key.
+Love: Spend time nurturing your relationships. They need care to thrive.
+Life: Explore mindfulness practices. They can enhance your overall well-being.`;
+
+} else if (dayOfYear === 60) {
+    return `Career: Embrace leadership opportunities that come your way. Your confidence will shine.
+Love: A heartfelt conversation can lead to deeper emotional intimacy.
+Life: Engage in a new physical activity. Movement is good for the mind and body.`;
+
+} else if (dayOfYear === 61) {
+    return `Career: You may encounter a setback today, but keep persevering. Success is on the horizon.
+Love: Take time to listen to your partner’s thoughts and feelings. Communication is vital.
+Life: Reflect on your personal growth. You’ve come a long way.`;
+
+} else if (dayOfYear === 62) {
+    return `Career: A project is nearing completion. Celebrate your hard work!
+Love: Make an effort to connect with your partner on a deeper level.
+Life: Engage in a creative hobby. It’s a great way to express yourself.`;
+
+} else if (dayOfYear === 63) {
+    return `Career: Today is a good day for brainstorming new ideas. Let your creativity flow.
+Love: Plan a fun activity with friends or family. Good times strengthen bonds.
+Life: Prioritize self-care. It’s essential for your well-being.`;
+
+} else if (dayOfYear === 64) {
+    return `Career: Collaborating with others can lead to exciting breakthroughs. Teamwork is key.
+Love: A small romantic gesture will go a long way in your relationship.
+Life: Spend time outdoors. Nature can provide healing and inspiration.`;
+
+} else if (dayOfYear === 65) {
+    return `Career: Stay focused on your tasks. Distractions can hinder your progress.
+Love: Show appreciation for your partner’s efforts. Kind words matter.
+Life: Consider exploring a new place or activity. Change can be refreshing.`;
+
+} else if (dayOfYear === 66) {
+    return `Career: Networking can lead to beneficial connections. Don’t hesitate to reach out.
+Love: Plan a special date to reconnect with your partner.
+Life: Reflect on what makes you happy. Understanding your joy is essential.`;
+
+} else if (dayOfYear === 67) {
+    return `Career: Today may bring unexpected changes at work. Stay adaptable.
+Love: A surprise encounter may reignite a spark in your relationship.
+Life: Dedicate time to a passion project. Creativity can uplift your spirit.`;
+
+} else if (dayOfYear === 68) {
+    return `Career: Your hard work will soon be recognized. Keep pushing forward.
+Love: Spend time engaging in deep conversations with loved ones.
+Life: Focus on balance. Ensure you allocate time for work and relaxation.`;
+
+} else if (dayOfYear === 69) {
+    return `Career: Embrace new responsibilities. They may lead to growth and opportunities.
+Love: A small act of kindness will strengthen your relationship.
+Life: Engage in a physical activity that you enjoy. Movement is vital for mental health.`;
+
+} else if (dayOfYear === 70) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Make time for each other amidst your busy schedules. Quality time matters.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 71) {
+    return `Career: Collaborate with colleagues to enhance project outcomes. Teamwork is key.
+Love: A surprise gesture will warm your partner's heart.
+Life: Spend time on a hobby that brings you joy. Nurturing your passions is important.`;
+
+} else if (dayOfYear === 72) {
+    return `Career: Today is ideal for brainstorming. Let your creativity shine.
+Love: Express your feelings to your partner. Vulnerability brings intimacy.
+Life: Engage in mindfulness practices. It can enhance your overall well-being.`;
+
+} else if (dayOfYear === 73) {
+    return `Career: Stay focused on your long-term goals. Patience is essential.
+Love: Plan a surprise outing for your partner. Spontaneity brings excitement.
+Life: Reflect on your personal growth. Recognize how far you've come.`;
+
+} else if (dayOfYear === 74) {
+    return `Career: A project may require extra attention. Tackle it head-on.
+Love: Spend time nurturing your relationships. They require care to thrive.
+Life: Explore new ideas through books or podcasts. Learning keeps your mind active.`;
+
+} else if (dayOfYear === 75) {
+    return `Career: Your dedication will be rewarded. Keep working hard.
+Love: A heartfelt conversation will strengthen your bond with a partner.
+Life: Consider starting a new routine that focuses on self-care.`;
+
+} else if (dayOfYear === 76) {
+    return `Career: Focus on completing tasks efficiently. Organization leads to success.
+Love: A small act of kindness will brighten your partner's day.
+Life: Spend time reflecting on your goals. Are they still aligned with your aspirations?`;
+
+} else if (dayOfYear === 77) {
+    return `Career: Seek out new networking opportunities. Connections can open doors.
+Love: A spontaneous outing could add excitement to your relationship.
+Life: Take time for self-reflection. Understanding your emotions can guide you.`;
+
+} else if (dayOfYear === 78) {
+    return `Career: Your hard work is about to pay off. Stay committed to your path.
+Love: Plan a thoughtful surprise for your partner. Romance matters.
+Life: Engage in creative activities. They can be therapeutic and fulfilling.`;
+
+} else if (dayOfYear === 79) {
+    return `Career: Avoid distractions and focus on your work today. It will lead to productivity.
+Love: Spend quality time with loved ones. Building connections is essential.
+Life: Consider practicing mindfulness or meditation. It can provide clarity.`;
+
+} else if (dayOfYear === 80) {
+    return `Career: Be proactive in seeking new opportunities. They may lead to growth.
+Love: A heartfelt letter or note will make your partner’s day.
+Life: Take time to appreciate the beauty around you. Nature can be grounding.`;
+
+} else if (dayOfYear === 81) {
+    return `Career: Collaborate with colleagues for better outcomes. Teamwork is essential.
+Love: Enjoy a quiet evening with your partner. Sometimes, simple moments are the best.
+Life: Reflect on your journey and the lessons learned along the way.`;
+
+} else if (dayOfYear === 82) {
+    return `Career: Stay focused on your projects. Distractions can derail progress.
+Love: A thoughtful gesture will enhance your connection with a partner.
+Life: Engage in a new hobby or interest. Exploring new passions can be fulfilling.`;
+
+} else if (dayOfYear === 83) {
+    return `Career: Today may present new challenges. Approach them with confidence.
+Love: Plan a fun date with your partner. Good times strengthen bonds.
+Life: Dedicate time to self-care. Prioritize your well-being.`;
+
+} else if (dayOfYear === 84) {
+    return `Career: Seek mentorship opportunities. Learning from others can be beneficial.
+Love: A surprise date could bring excitement to your relationship.
+Life: Consider journaling. Writing your thoughts can provide clarity and peace.`;
+
+} else if (dayOfYear === 85) {
+    return `Career: Focus on team collaboration. Working together leads to success.
+Love: Share your dreams with your partner. Open communication deepens bonds.
+Life: Take a break and enjoy a simple pleasure, like a favorite book or show.`;
+
+} else if (dayOfYear === 86) {
+    return `Career: Your hard work may soon be recognized. Stay committed.
+Love: Spend time nurturing your relationships. They need care to thrive.
+Life: Reflect on what brings you happiness. Understanding your joy is vital.`;
+
+} else if (dayOfYear === 87) {
+    return `Career: A potential promotion could be on the horizon. Stay focused.
+Love: Make time for each other amidst busy schedules. Quality time is important.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 88) {
+    return `Career: Networking can lead to beneficial connections. Don’t hesitate to reach out.
+Love: Plan a special date to reconnect with your partner.
+Life: Reflect on what makes you happy. Understanding your joy is essential.`;
+
+} else if (dayOfYear === 89) {
+    return `Career: Embrace new responsibilities. They may lead to growth.
+Love: A small act of kindness will strengthen your relationship.
+Life: Engage in a physical activity that you enjoy. Movement is vital for mental health.`;
+
+} else if (dayOfYear === 90) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Make time for each other amidst your busy schedules. Quality time matters.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 91) {
+    return `Career: Collaborate with colleagues to enhance project outcomes. Teamwork is key.
+Love: A surprise gesture will warm your partner's heart.
+Life: Spend time on a hobby that brings you joy. Nurturing your passions is important.`;
+
+} else if (dayOfYear === 92) {
+    return `Career: Today is ideal for brainstorming. Let your creativity shine.
+Love: Express your feelings to your partner. Vulnerability brings intimacy.
+Life: Engage in mindfulness practices. It can enhance your overall well-being.`;
+
+} else if (dayOfYear === 93) {
+    return `Career: Stay focused on your long-term goals. Patience is essential.
+Love: Plan a surprise outing for your partner. Spontaneity brings excitement.
+Life: Reflect on your personal growth. Recognize how far you've come.`;
+
+} else if (dayOfYear === 94) {
+    return `Career: A project may require extra attention. Tackle it head-on.
+Love: Spend time nurturing your relationships. They require care to thrive.
+Life: Explore new ideas through books or podcasts. Learning keeps your mind active.`;
+
+} else if (dayOfYear === 95) {
+    return `Career: Your dedication will be rewarded. Keep working hard.
+Love: A heartfelt conversation will strengthen your bond with a partner.
+Life: Consider starting a new routine that focuses on self-care.`;
+
+} else if (dayOfYear === 96) {
+    return `Career: Focus on completing tasks efficiently. Organization leads to success.
+Love: A small act of kindness will brighten your partner's day.
+Life: Spend time reflecting on your goals. Are they still aligned with your aspirations?`;
+
+} else if (dayOfYear === 97) {
+    return `Career: Seek out new networking opportunities. Connections can open doors.
+Love: A spontaneous outing could add excitement to your relationship.
+Life: Take time for self-reflection. Understanding your emotions can guide you.`;
+
+} else if (dayOfYear === 98) {
+    return `Career: Your hard work is about to pay off. Stay committed to your path.
+Love: Plan a thoughtful surprise for your partner. Romance matters.
+Life: Engage in creative activities. They can be therapeutic and fulfilling.`;
+
+} else if (dayOfYear === 99) {
+    return `Career: Avoid distractions and focus on your work today. It will lead to productivity.
+Love: Spend quality time with loved ones. Building connections is essential.
+Life: Consider practicing mindfulness or meditation. It can provide clarity.`;
+
+} else if (dayOfYear === 100) {
+    return `Career: Be proactive in seeking new opportunities. They may lead to growth.
+Love: A heartfelt letter or note will make your partner’s day.
+Life: Take time to appreciate the beauty around you. Nature can be grounding.`;
+
+} else if (dayOfYear === 101) {
+    return `Career: Collaborate with colleagues for better outcomes. Teamwork is essential.
+Love: Enjoy a quiet evening with your partner. Sometimes, simple moments are the best.
+Life: Reflect on your journey and the lessons learned along the way.`;
+
+} else if (dayOfYear === 102) {
+    return `Career: Stay focused on your projects. Distractions can derail progress.
+Love: A thoughtful gesture will enhance your connection with a partner.
+Life: Engage in a new hobby or interest. Exploring new passions can be fulfilling.`;
+
+} else if (dayOfYear === 103) {
+    return `Career: Today may present new challenges. Approach them with confidence.
+Love: Plan a fun date with your partner. Good times strengthen bonds.
+Life: Dedicate time to self-care. Prioritize your well-being.`;
+
+} else if (dayOfYear === 104) {
+    return `Career: Seek mentorship opportunities. Learning from others can be beneficial.
+Love: A surprise date could bring excitement to your relationship.
+Life: Consider journaling. Writing your thoughts can provide clarity and peace.`;
+
+} else if (dayOfYear === 105) {
+    return `Career: Focus on team collaboration. Working together leads to success.
+Love: Share your dreams with your partner. Open communication deepens bonds.
+Life: Take a break and enjoy a simple pleasure, like a favorite book or show.`;
+
+} else if (dayOfYear === 106) {
+    return `Career: Your hard work may soon be recognized. Stay committed.
+Love: Spend time nurturing your relationships. They need care to thrive.
+Life: Reflect on what brings you happiness. Understanding your joy is vital.`;
+
+} else if (dayOfYear === 107) {
+    return `Career: A potential promotion could be on the horizon. Stay focused.
+Love: Make time for each other amidst busy schedules. Quality time is important.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 108) {
+    return `Career: Networking can lead to beneficial connections. Don’t hesitate to reach out.
+Love: Plan a special date to reconnect with your partner.
+Life: Reflect on what makes you happy. Understanding your joy is essential.`;
+
+} else if (dayOfYear === 109) {
+    return `Career: Embrace new responsibilities. They may lead to growth.
+Love: A small act of kindness will strengthen your relationship.
+Life: Engage in a physical activity that you enjoy. Movement is vital for mental health.`;
+
+} else if (dayOfYear === 110) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Make time for each other amidst your busy schedules. Quality time matters.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 111) {
+    return `Career: Collaborate with colleagues to enhance project outcomes. Teamwork is key.
+Love: A surprise gesture will warm your partner's heart.
+Life: Spend time on a hobby that brings you joy. Nurturing your passions is important.`;
+
+} else if (dayOfYear === 112) {
+    return `Career: Today is ideal for brainstorming. Let your creativity shine.
+Love: Express your feelings to your partner. Vulnerability brings intimacy.
+Life: Engage in mindfulness practices. It can enhance your overall well-being.`;
+
+} else if (dayOfYear === 113) {
+    return `Career: Stay focused on your long-term goals. Patience is essential.
+Love: Plan a surprise outing for your partner. Spontaneity brings excitement.
+Life: Reflect on your personal growth. Recognize how far you've come.`;
+
+} else if (dayOfYear === 114) {
+    return `Career: A project may require extra attention. Tackle it head-on.
+Love: Spend time nurturing your relationships. They require care to thrive.
+Life: Explore new ideas through books or podcasts. Learning keeps your mind active.`;
+
+} else if (dayOfYear === 115) {
+    return `Career: Your dedication will be rewarded. Keep working hard.
+Love: A heartfelt conversation will strengthen your bond with a partner.
+Life: Consider starting a new routine that focuses on self-care.`;
+
+} else if (dayOfYear === 116) {
+    return `Career: Focus on completing tasks efficiently. Organization leads to success.
+Love: A small act of kindness will brighten your partner's day.
+Life: Spend time reflecting on your goals. Are they still aligned with your aspirations?`;
+
+} else if (dayOfYear === 117) {
+    return `Career: Seek out new networking opportunities. Connections can open doors.
+Love: A spontaneous outing could add excitement to your relationship.
+Life: Take time for self-reflection. Understanding your emotions can guide you.`;
+
+} else if (dayOfYear === 118) {
+    return `Career: Your hard work is about to pay off. Stay committed to your path.
+Love: Plan a thoughtful surprise for your partner. Romance matters.
+Life: Engage in creative activities. They can be therapeutic and fulfilling.`;
+
+} else if (dayOfYear === 119) {
+    return `Career: Avoid distractions and focus on your work today. It will lead to productivity.
+Love: Spend quality time with loved ones. Building connections is essential.
+Life: Consider practicing mindfulness or meditation. It can provide clarity.`;
+
+} else if (dayOfYear === 120) {
+    return `Career: Be proactive in seeking new opportunities. They may lead to growth.
+Love: A heartfelt letter or note will make your partner’s day.
+Life: Take time to appreciate the beauty around you. Nature can be grounding.`;
+
+} else if (dayOfYear === 121) {
+    return `Career: Collaborate with colleagues for better outcomes. Teamwork is essential.
+Love: Enjoy a quiet evening with your partner. Sometimes, simple moments are the best.
+Life: Reflect on your journey and the lessons learned along the way.`;
+
+} else if (dayOfYear === 122) {
+    return `Career: Stay focused on your projects. Distractions can derail progress.
+Love: A thoughtful gesture will enhance your connection with a partner.
+Life: Engage in a new hobby or interest. Exploring new passions can be fulfilling.`;
+
+} else if (dayOfYear === 123) {
+    return `Career: Today may present new challenges. Approach them with confidence.
+Love: Plan a fun date with your partner. Good times strengthen bonds.
+Life: Dedicate time to self-care. Prioritize your well-being.`;
+
+} else if (dayOfYear === 124) {
+    return `Career: Seek mentorship opportunities. Learning from others can be beneficial.
+Love: A surprise date could bring excitement to your relationship.
+Life: Consider journaling. Writing your thoughts can provide clarity and peace.`;
+
+} else if (dayOfYear === 125) {
+    return `Career: Focus on team collaboration. Working together leads to success.
+Love: Share your dreams with your partner. Open communication deepens bonds.
+Life: Take a break and enjoy a simple pleasure, like a favorite book or show.`;
+
+} else if (dayOfYear === 126) {
+    return `Career: Your hard work may soon be recognized. Stay committed.
+Love: Spend time nurturing your relationships. They need care to thrive.
+Life: Reflect on what brings you happiness. Understanding your joy is vital.`;
+
+} else if (dayOfYear === 127) {
+    return `Career: A potential promotion could be on the horizon. Stay focused.
+Love: Make time for each other amidst busy schedules. Quality time is important.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 128) {
+    return `Career: Networking can lead to beneficial connections. Don’t hesitate to reach out.
+Love: Plan a special date to reconnect with your partner.
+Life: Reflect on what makes you happy. Understanding your joy is essential.`;
+
+} else if (dayOfYear === 129) {
+    return `Career: Embrace new responsibilities. They may lead to growth.
+Love: A small act of kindness will strengthen your relationship.
+Life: Engage in a physical activity that you enjoy. Movement is vital for mental health.`;
+
+} else if (dayOfYear === 130) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Make time for each other amidst your busy schedules. Quality time matters.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 131) {
+    return `Career: Collaborate with colleagues to enhance project outcomes. Teamwork is key.
+Love: A surprise gesture will warm your partner's heart.
+Life: Spend time on a hobby that brings you joy. Nurturing your passions is important.`;
+
+} else if (dayOfYear === 132) {
+    return `Career: Today is ideal for brainstorming. Let your creativity shine.
+Love: Express your feelings to your partner. Vulnerability brings intimacy.
+Life: Engage in mindfulness practices. It can enhance your overall well-being.`;
+
+} else if (dayOfYear === 133) {
+    return `Career: Stay focused on your long-term goals. Patience is essential.
+Love: Plan a surprise outing for your partner. Spontaneity brings excitement.
+Life: Reflect on your personal growth. Recognize how far you've come.`;
+
+} else if (dayOfYear === 134) {
+    return `Career: A project may require extra attention. Tackle it head-on.
+Love: Spend time nurturing your relationships. They require care to thrive.
+Life: Explore new ideas through books or podcasts. Learning keeps your mind active.`;
+
+} else if (dayOfYear === 135) {
+    return `Career: Your dedication will be rewarded. Keep working hard.
+Love: A heartfelt conversation will strengthen your bond with a partner.
+Life: Consider starting a new routine that focuses on self-care.`;
+
+} else if (dayOfYear === 136) {
+    return `Career: Focus on completing tasks efficiently. Organization leads to success.
+Love: A small act of kindness will brighten your partner's day.
+Life: Spend time reflecting on your goals. Are they still aligned with your aspirations?`;
+
+} else if (dayOfYear === 137) {
+    return `Career: Seek out new networking opportunities. Connections can open doors.
+Love: A spontaneous outing could add excitement to your relationship.
+Life: Take time for self-reflection. Understanding your emotions can guide you.`;
+
+} else if (dayOfYear === 138) {
+    return `Career: Your hard work is about to pay off. Stay committed to your path.
+Love: Plan a thoughtful surprise for your partner. Romance matters.
+Life: Engage in creative activities. They can be therapeutic and fulfilling.`;
+
+} else if (dayOfYear === 139) {
+    return `Career: Avoid distractions and focus on your work today. It will lead to productivity.
+Love: Spend quality time with loved ones. Building connections is essential.
+Life: Consider practicing mindfulness or meditation. It can provide clarity.`;
+
+} else if (dayOfYear === 140) {
+    return `Career: Be proactive in seeking new opportunities. They may lead to growth.
+Love: A heartfelt letter or note will make your partner’s day.
+Life: Take time to appreciate the beauty around you. Nature can be grounding.`;
+
+} else if (dayOfYear === 141) {
+    return `Career: Collaborate with colleagues for better outcomes. Teamwork is essential.
+Love: Enjoy a quiet evening with your partner. Sometimes, simple moments are the best.
+Life: Reflect on your journey and the lessons learned along the way.`;
+
+} else if (dayOfYear === 142) {
+    return `Career: Stay focused on your projects. Distractions can derail progress.
+Love: A thoughtful gesture will enhance your connection with a partner.
+Life: Engage in a new hobby or interest. Exploring new passions can be fulfilling.`;
+
+} else if (dayOfYear === 143) {
+    return `Career: Today may present new challenges. Approach them with confidence.
+Love: Plan a fun date with your partner. Good times strengthen bonds.
+Life: Dedicate time to self-care. Prioritize your well-being.`;
+
+} else if (dayOfYear === 144) {
+    return `Career: Seek mentorship opportunities. Learning from others can be beneficial.
+Love: A surprise date could bring excitement to your relationship.
+Life: Consider journaling. Writing your thoughts can provide clarity and peace.`;
+
+} else if (dayOfYear === 145) {
+    return `Career: Focus on team collaboration. Working together leads to success.
+Love: Share your dreams with your partner. Open communication deepens bonds.
+Life: Take a break and enjoy a simple pleasure, like a favorite book or show.`;
+
+} else if (dayOfYear === 146) {
+    return `Career: Your hard work may soon be recognized. Stay committed.
+Love: Spend time nurturing your relationships. They need care to thrive.
+Life: Reflect on what brings you happiness. Understanding your joy is vital.`;
+
+} else if (dayOfYear === 147) {
+    return `Career: A potential promotion could be on the horizon. Stay focused.
+Love: Make time for each other amidst busy schedules. Quality time is important.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 148) {
+    return `Career: Networking can lead to beneficial connections. Don’t hesitate to reach out.
+Love: Plan a special date to reconnect with your partner.
+Life: Reflect on what makes you happy. Understanding your joy is essential.`;
+
+} else if (dayOfYear === 149) {
+    return `Career: Embrace new responsibilities. They may lead to growth.
+Love: A small act of kindness will strengthen your relationship.
+Life: Engage in a physical activity that you enjoy. Movement is vital for mental health.`;
+
+} else if (dayOfYear === 150) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Make time for each other amidst your busy schedules. Quality time matters.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 151) {
+    return `Career: Collaborate with colleagues to enhance project outcomes. Teamwork is key.
+Love: A surprise gesture will warm your partner's heart.
+Life: Spend time on a hobby that brings you joy. Nurturing your passions is important.`;
+
+} else if (dayOfYear === 152) {
+    return `Career: Today is ideal for brainstorming. Let your creativity shine.
+Love: Express your feelings to your partner. Vulnerability brings intimacy.
+Life: Engage in mindfulness practices. It can enhance your overall well-being.`;
+
+} else if (dayOfYear === 153) {
+    return `Career: Stay focused on your long-term goals. Patience is essential.
+Love: Plan a surprise outing for your partner. Spontaneity brings excitement.
+Life: Reflect on your personal growth. Recognize how far you've come.`;
+
+} else if (dayOfYear === 154) {
+    return `Career: A project may require extra attention. Tackle it head-on.
+Love: Spend time nurturing your relationships. They require care to thrive.
+Life: Explore new ideas through books or podcasts. Learning keeps your mind active.`;
+
+} else if (dayOfYear === 155) {
+    return `Career: Your dedication will be rewarded. Keep working hard.
+Love: A heartfelt conversation will strengthen your bond with a partner.
+Life: Consider starting a new routine that focuses on self-care.`;
+
+} else if (dayOfYear === 156) {
+    return `Career: Focus on completing tasks efficiently. Organization leads to success.
+Love: A small act of kindness will brighten your partner's day.
+Life: Spend time reflecting on your goals. Are they still aligned with your aspirations?`;
+
+} else if (dayOfYear === 157) {
+    return `Career: Seek out new networking opportunities. Connections can open doors.
+Love: A spontaneous outing could add excitement to your relationship.
+Life: Take time for self-reflection. Understanding your emotions can guide you.`;
+
+} else if (dayOfYear === 158) {
+    return `Career: Your hard work is about to pay off. Stay committed to your path.
+Love: Plan a thoughtful surprise for your partner. Romance matters.
+Life: Engage in creative activities. They can be therapeutic and fulfilling.`;
+
+} else if (dayOfYear === 159) {
+    return `Career: Avoid distractions and focus on your work today. It will lead to productivity.
+Love: Spend quality time with loved ones. Building connections is essential.
+Life: Consider practicing mindfulness or meditation. It can provide clarity.`;
+
+} else if (dayOfYear === 160) {
+    return `Career: Be proactive in seeking new opportunities. They may lead to growth.
+Love: A heartfelt letter or note will make your partner’s day.
+Life: Take time to appreciate the beauty around you. Nature can be grounding.`;
+
+} else if (dayOfYear === 161) {
+    return `Career: Collaborate with colleagues for better outcomes. Teamwork is essential.
+Love: Enjoy a quiet evening with your partner. Sometimes, simple moments are the best.
+Life: Reflect on your journey and the lessons learned along the way.`;
+
+} else if (dayOfYear === 162) {
+    return `Career: Stay focused on your projects. Distractions can derail progress.
+Love: A thoughtful gesture will enhance your connection with a partner.
+Life: Engage in a new hobby or interest. Exploring new passions can be fulfilling.`;
+
+} else if (dayOfYear === 163) {
+    return `Career: Today may present new challenges. Approach them with confidence.
+Love: Plan a fun date with your partner. Good times strengthen bonds.
+Life: Dedicate time to self-care. Prioritize your well-being.`;
+
+} else if (dayOfYear === 164) {
+    return `Career: Seek mentorship opportunities. Learning from others can be beneficial.
+Love: A surprise date could bring excitement to your relationship.
+Life: Consider journaling. Writing your thoughts can provide clarity and peace.`;
+
+} else if (dayOfYear === 165) {
+    return `Career: Focus on team collaboration. Working together leads to success.
+Love: Share your dreams with your partner. Open communication deepens bonds.
+Life: Take a break and enjoy a simple pleasure, like a favorite book or show.`;
+
+} else if (dayOfYear === 166) {
+    return `Career: Your hard work may soon be recognized. Stay committed.
+Love: Spend time nurturing your relationships. They need care to thrive.
+Life: Reflect on what brings you happiness. Understanding your joy is vital.`;
+
+} else if (dayOfYear === 167) {
+    return `Career: A potential promotion could be on the horizon. Stay focused.
+Love: Make time for each other amidst busy schedules. Quality time is important.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 168) {
+    return `Career: Networking can lead to beneficial connections. Don’t hesitate to reach out.
+Love: Plan a special date to reconnect with your partner.
+Life: Reflect on what makes you happy. Understanding your joy is essential.`;
+
+} else if (dayOfYear === 169) {
+    return `Career: Embrace new responsibilities. They may lead to growth.
+Love: A small act of kindness will strengthen your relationship.
+Life: Engage in a physical activity that you enjoy. Movement is vital for mental health.`;
+
+} else if (dayOfYear === 170) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Make time for each other amidst your busy schedules. Quality time matters.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 171) {
+    return `Career: Collaborate with colleagues to enhance project outcomes. Teamwork is key.
+Love: A surprise gesture will warm your partner's heart.
+Life: Spend time on a hobby that brings you joy. Nurturing your passions is important.`;
+
+} else if (dayOfYear === 172) {
+    return `Career: Today is ideal for brainstorming. Let your creativity shine.
+Love: Express your feelings to your partner. Vulnerability brings intimacy.
+Life: Engage in mindfulness practices. It can enhance your overall well-being.`;
+
+} else if (dayOfYear === 173) {
+    return `Career: Stay focused on your long-term goals. Patience is essential.
+Love: Plan a surprise outing for your partner. Spontaneity brings excitement.
+Life: Reflect on your personal growth. Recognize how far you've come.`;
+
+} else if (dayOfYear === 174) {
+    return `Career: A project may require extra attention. Tackle it head-on.
+Love: Spend time nurturing your relationships. They require care to thrive.
+Life: Explore new ideas through books or podcasts. Learning keeps your mind active.`;
+
+} else if (dayOfYear === 175) {
+    return `Career: Your dedication will be rewarded. Keep working hard.
+Love: A heartfelt conversation will strengthen your bond with a partner.
+Life: Consider starting a new routine that focuses on self-care.`;
+
+} else if (dayOfYear === 176) {
+    return `Career: Focus on completing tasks efficiently. Organization leads to success.
+Love: A small act of kindness will brighten your partner's day.
+Life: Spend time reflecting on your goals. Are they still aligned with your aspirations?`;
+
+} else if (dayOfYear === 177) {
+    return `Career: Seek out new networking opportunities. Connections can open doors.
+Love: A spontaneous outing could add excitement to your relationship.
+Life: Take time for self-reflection. Understanding your emotions can guide you.`;
+
+} else if (dayOfYear === 178) {
+    return `Career: Your hard work is about to pay off. Stay committed to your path.
+Love: Plan a thoughtful surprise for your partner. Romance matters.
+Life: Engage in creative activities. They can be therapeutic and fulfilling.`;
+
+} else if (dayOfYear === 179) {
+    return `Career: Avoid distractions and focus on your work today. It will lead to productivity.
+Love: Spend quality time with loved ones. Building connections is essential.
+Life: Consider practicing mindfulness or meditation. It can provide clarity.`;
+
+} else if (dayOfYear === 180) {
+    return `Career: Be proactive in seeking new opportunities. They may lead to growth.
+Love: A heartfelt letter or note will make your partner’s day.
+Life: Take time to appreciate the beauty around you. Nature can be grounding.`;
+
+} else if (dayOfYear === 181) {
+    return `Career: Collaborate with colleagues for better outcomes. Teamwork is essential.
+Love: Enjoy a quiet evening with your partner. Sometimes, simple moments are the best.
+Life: Reflect on your journey and the lessons learned along the way.`;
+
+} else if (dayOfYear === 182) {
+    return `Career: Stay focused on your projects. Distractions can derail progress.
+Love: A thoughtful gesture will enhance your connection with a partner.
+Life: Engage in a new hobby or interest. Exploring new passions can be fulfilling.`;
+
+} else if (dayOfYear === 183) {
+    return `Career: Today may present new challenges. Approach them with confidence.
+Love: Plan a fun date with your partner. Good times strengthen bonds.
+Life: Dedicate time to self-care. Prioritize your well-being.`;
+
+} else if (dayOfYear === 184) {
+    return `Career: Seek mentorship opportunities. Learning from others can be beneficial.
+Love: A surprise date could bring excitement to your relationship.
+Life: Consider journaling. Writing your thoughts can provide clarity and peace.`;
+
+} else if (dayOfYear === 185) {
+    return `Career: Focus on team collaboration. Working together leads to success.
+Love: Share your dreams with your partner. Open communication deepens bonds.
+Life: Take a break and enjoy a simple pleasure, like a favorite book or show.`;
+
+} else if (dayOfYear === 186) {
+    return `Career: Your hard work may soon be recognized. Stay committed.
+Love: Spend time nurturing your relationships. They need care to thrive.
+Life: Reflect on what brings you happiness. Understanding your joy is vital.`;
+
+} else if (dayOfYear === 187) {
+    return `Career: A potential promotion could be on the horizon. Stay focused.
+Love: Make time for each other amidst busy schedules. Quality time is important.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 188) {
+    return `Career: Networking can lead to beneficial connections. Don’t hesitate to reach out.
+Love: Plan a special date to reconnect with your partner.
+Life: Reflect on what makes you happy. Understanding your joy is essential.`;
+
+} else if (dayOfYear === 189) {
+    return `Career: Embrace new responsibilities. They may lead to growth.
+Love: A small act of kindness will strengthen your relationship.
+Life: Engage in a physical activity that you enjoy. Movement is vital for mental health.`;
+
+} else if (dayOfYear === 190) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Make time for each other amidst your busy schedules. Quality time matters.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 191) {
+    return `Career: Collaborate with colleagues to enhance project outcomes. Teamwork is key.
+Love: A surprise gesture will warm your partner's heart.
+Life: Spend time on a hobby that brings you joy. Nurturing your passions is important.`;
+
+} else if (dayOfYear === 192) {
+    return `Career: Today is ideal for brainstorming. Let your creativity shine.
+Love: Express your feelings to your partner. Vulnerability brings intimacy.
+Life: Engage in mindfulness practices. It can enhance your overall well-being.`;
+
+} else if (dayOfYear === 193) {
+    return `Career: Stay focused on your long-term goals. Patience is essential.
+Love: Plan a surprise outing for your partner. Spontaneity brings excitement.
+Life: Reflect on your personal growth. Recognize how far you've come.`;
+
+} else if (dayOfYear === 194) {
+    return `Career: A project may require extra attention. Tackle it head-on.
+Love: Spend time nurturing your relationships. They require care to thrive.
+Life: Explore new ideas through books or podcasts. Learning keeps your mind active.`;
+
+} else if (dayOfYear === 195) {
+    return `Career: Your dedication will be rewarded. Keep working hard.
+Love: A heartfelt conversation will strengthen your bond with a partner.
+Life: Consider starting a new routine that focuses on self-care.`;
+
+} else if (dayOfYear === 196) {
+    return `Career: Focus on completing tasks efficiently. Organization leads to success.
+Love: A small act of kindness will brighten your partner's day.
+Life: Spend time reflecting on your goals. Are they still aligned with your aspirations?`;
+
+} else if (dayOfYear === 197) {
+    return `Career: Seek out new networking opportunities. Connections can open doors.
+Love: A spontaneous outing could add excitement to your relationship.
+Life: Take time for self-reflection. Understanding your emotions can guide you.`;
+
+} else if (dayOfYear === 198) {
+    return `Career: Your hard work is about to pay off. Stay committed to your path.
+Love: Plan a thoughtful surprise for your partner. Romance matters.
+Life: Engage in creative activities. They can be therapeutic and fulfilling.`;
+
+} else if (dayOfYear === 199) {
+    return `Career: Avoid distractions and focus on your work today. It will lead to productivity.
+Love: Spend quality time with loved ones. Building connections is essential.
+Life: Consider practicing mindfulness or meditation. It can provide clarity.`;
+
+} else if (dayOfYear === 200) {
+    return `Career: Be proactive in seeking new opportunities. They may lead to growth.
+Love: A heartfelt letter or note will make your partner’s day.
+Life: Take time to appreciate the beauty around you. Nature can be grounding.`;
+
+} else if (dayOfYear === 201) {
+    return `Career: Collaborate with colleagues for better outcomes. Teamwork is essential.
+Love: Enjoy a quiet evening with your partner. Sometimes, simple moments are the best.
+Life: Reflect on your journey and the lessons learned along the way.`;
+
+} else if (dayOfYear === 202) {
+    return `Career: Stay focused on your projects. Distractions can derail progress.
+Love: A thoughtful gesture will enhance your connection with a partner.
+Life: Engage in a new hobby or interest. Exploring new passions can be fulfilling.`;
+
+} else if (dayOfYear === 203) {
+    return `Career: Today may present new challenges. Approach them with confidence.
+Love: Plan a fun date with your partner. Good times strengthen bonds.
+Life: Dedicate time to self-care. Prioritize your well-being.`;
+
+} else if (dayOfYear === 204) {
+    return `Career: Seek mentorship opportunities. Learning from others can be beneficial.
+Love: A surprise date could bring excitement to your relationship.
+Life: Consider journaling. Writing your thoughts can provide clarity and peace.`;
+
+} else if (dayOfYear === 205) {
+    return `Career: Focus on team collaboration. Working together leads to success.
+Love: Share your dreams with your partner. Open communication deepens bonds.
+Life: Take a break and enjoy a simple pleasure, like a favorite book or show.`;
+
+} else if (dayOfYear === 206) {
+    return `Career: Your hard work may soon be recognized. Stay committed.
+Love: Spend time nurturing your relationships. They need care to thrive.
+Life: Reflect on what brings you happiness. Understanding your joy is vital.`;
+
+} else if (dayOfYear === 207) {
+    return `Career: A potential promotion could be on the horizon. Stay focused.
+Love: Make time for each other amidst busy schedules. Quality time is important.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 208) {
+    return `Career: Networking can lead to beneficial connections. Don’t hesitate to reach out.
+Love: Plan a special date to reconnect with your partner.
+Life: Reflect on what makes you happy. Understanding your joy is essential.`;
+
+} else if (dayOfYear === 209) {
+    return `Career: Embrace new responsibilities. They may lead to growth.
+Love: A small act of kindness will strengthen your relationship.
+Life: Engage in a physical activity that you enjoy. Movement is vital for mental health.`;
+
+} else if (dayOfYear === 210) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Make time for each other amidst your busy schedules. Quality time matters.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 211) {
+    return `Career: Collaborate with colleagues to enhance project outcomes. Teamwork is key.
+Love: A surprise gesture will warm your partner's heart.
+Life: Spend time on a hobby that brings you joy. Nurturing your passions is important.`;
+
+} else if (dayOfYear === 212) {
+    return `Career: Today is ideal for brainstorming. Let your creativity shine.
+Love: Express your feelings to your partner. Vulnerability brings intimacy.
+Life: Engage in mindfulness practices. It can enhance your overall well-being.`;
+
+} else if (dayOfYear === 213) {
+    return `Career: Stay focused on your long-term goals. Patience is essential.
+Love: Plan a surprise outing for your partner. Spontaneity brings excitement.
+Life: Reflect on your personal growth. Recognize how far you've come.`;
+
+} else if (dayOfYear === 214) {
+    return `Career: A project may require extra attention. Tackle it head-on.
+Love: Spend time nurturing your relationships. They require care to thrive.
+Life: Explore new ideas through books or podcasts. Learning keeps your mind active.`;
+
+} else if (dayOfYear === 215) {
+    return `Career: Your dedication will be rewarded. Keep working hard.
+Love: A heartfelt conversation will strengthen your bond with a partner.
+Life: Consider starting a new routine that focuses on self-care.`;
+
+} else if (dayOfYear === 216) {
+    return `Career: Focus on completing tasks efficiently. Organization leads to success.
+Love: A small act of kindness will brighten your partner's day.
+Life: Spend time reflecting on your goals. Are they still aligned with your aspirations?`;
+
+} else if (dayOfYear === 217) {
+    return `Career: Seek out new networking opportunities. Connections can open doors.
+Love: A spontaneous outing could add excitement to your relationship.
+Life: Take time for self-reflection. Understanding your emotions can guide you.`;
+
+} else if (dayOfYear === 218) {
+    return `Career: Your hard work is about to pay off. Stay committed to your path.
+Love: Plan a thoughtful surprise for your partner. Romance matters.
+Life: Engage in creative activities. They can be therapeutic and fulfilling.`;
+
+} else if (dayOfYear === 219) {
+    return `Career: Avoid distractions and focus on your work today. It will lead to productivity.
+Love: Spend quality time with loved ones. Building connections is essential.
+Life: Consider practicing mindfulness or meditation. It can provide clarity.`;
+
+} else if (dayOfYear === 220) {
+    return `Career: Be proactive in seeking new opportunities. They may lead to growth.
+Love: A heartfelt letter or note will make your partner’s day.
+Life: Take time to appreciate the beauty around you. Nature can be grounding.`;
+
+} else if (dayOfYear === 221) {
+    return `Career: Collaborate with colleagues for better outcomes. Teamwork is essential.
+Love: Enjoy a quiet evening with your partner. Sometimes, simple moments are the best.
+Life: Reflect on your journey and the lessons learned along the way.`;
+
+} else if (dayOfYear === 222) {
+    return `Career: Stay focused on your projects. Distractions can derail progress.
+Love: A thoughtful gesture will enhance your connection with a partner.
+Life: Engage in a new hobby or interest. Exploring new passions can be fulfilling.`;
+
+} else if (dayOfYear === 223) {
+    return `Career: Today may present new challenges. Approach them with confidence.
+Love: Plan a fun date with your partner. Good times strengthen bonds.
+Life: Dedicate time to self-care. Prioritize your well-being.`;
+
+} else if (dayOfYear === 224) {
+    return `Career: Seek mentorship opportunities. Learning from others can be beneficial.
+Love: A surprise date could bring excitement to your relationship.
+Life: Consider journaling. Writing your thoughts can provide clarity and peace.`;
+
+} else if (dayOfYear === 225) {
+    return `Career: Focus on team collaboration. Working together leads to success.
+Love: Share your dreams with your partner. Open communication deepens bonds.
+Life: Take a break and enjoy a simple pleasure, like a favorite book or show.`;
+
+} else if (dayOfYear === 226) {
+    return `Career: Your hard work may soon be recognized. Stay committed.
+Love: Spend time nurturing your relationships. They need care to thrive.
+Life: Reflect on what brings you happiness. Understanding your joy is vital.`;
+
+} else if (dayOfYear === 227) {
+    return `Career: A potential promotion could be on the horizon. Stay focused.
+Love: Make time for each other amidst busy schedules. Quality time is important.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 228) {
+    return `Career: Networking can lead to beneficial connections. Don’t hesitate to reach out.
+Love: Plan a special date to reconnect with your partner.
+Life: Reflect on what makes you happy. Understanding your joy is essential.`;
+
+} else if (dayOfYear === 229) {
+    return `Career: Embrace new responsibilities. They may lead to growth.
+Love: A small act of kindness will strengthen your relationship.
+Life: Engage in a physical activity that you enjoy. Movement is vital for mental health.`;
+
+} else if (dayOfYear === 230) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Make time for each other amidst your busy schedules. Quality time matters.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 231) {
+    return `Career: Collaborate with colleagues to enhance project outcomes. Teamwork is key.
+Love: A surprise gesture will warm your partner's heart.
+Life: Spend time on a hobby that brings you joy. Nurturing your passions is important.`;
+
+} else if (dayOfYear === 232) {
+    return `Career: Today is ideal for brainstorming. Let your creativity shine.
+Love: Express your feelings to your partner. Vulnerability brings intimacy.
+Life: Engage in mindfulness practices. It can enhance your overall well-being.`;
+
+} else if (dayOfYear === 233) {
+    return `Career: Stay focused on your long-term goals. Patience is essential.
+Love: Plan a surprise outing for your partner. Spontaneity brings excitement.
+Life: Reflect on your personal growth. Recognize how far you've come.`;
+
+} else if (dayOfYear === 234) {
+    return `Career: A project may require extra attention. Tackle it head-on.
+Love: Spend time nurturing your relationships. They require care to thrive.
+Life: Explore new ideas through books or podcasts. Learning keeps your mind active.`;
+
+} else if (dayOfYear === 235) {
+    return `Career: Your dedication will be rewarded. Keep working hard.
+Love: A heartfelt conversation will strengthen your bond with a partner.
+Life: Consider starting a new routine that focuses on self-care.`;
+
+} else if (dayOfYear === 236) {
+    return `Career: Focus on completing tasks efficiently. Organization leads to success.
+Love: A small act of kindness will brighten your partner's day.
+Life: Spend time reflecting on your goals. Are they still aligned with your aspirations?`;
+
+} else if (dayOfYear === 237) {
+    return `Career: Seek out new networking opportunities. Connections can open doors.
+Love: A spontaneous outing could add excitement to your relationship.
+Life: Take time for self-reflection. Understanding your emotions can guide you.`;
+
+} else if (dayOfYear === 238) {
+    return `Career: Your hard work is about to pay off. Stay committed to your path.
+Love: Plan a thoughtful surprise for your partner. Romance matters.
+Life: Engage in creative activities. They can be therapeutic and fulfilling.`;
+
+} else if (dayOfYear === 239) {
+    return `Career: Avoid distractions and focus on your work today. It will lead to productivity.
+Love: Spend quality time with loved ones. Building connections is essential.
+Life: Consider practicing mindfulness or meditation. It can provide clarity.`;
+
+} else if (dayOfYear === 240) {
+    return `Career: Be proactive in seeking new opportunities. They may lead to growth.
+Love: A heartfelt letter or note will make your partner’s day.
+Life: Take time to appreciate the beauty around you. Nature can be grounding.`;
+
+} else if (dayOfYear === 241) {
+    return `Career: Collaborate with colleagues for better outcomes. Teamwork is essential.
+Love: Enjoy a quiet evening with your partner. Sometimes, simple moments are the best.
+Life: Reflect on your journey and the lessons learned along the way.`;
+
+} else if (dayOfYear === 242) {
+    return `Career: Stay focused on your projects. Distractions can derail progress.
+Love: A thoughtful gesture will enhance your connection with a partner.
+Life: Engage in a new hobby or interest. Exploring new passions can be fulfilling.`;
+
+} else if (dayOfYear === 243) {
+    return `Career: Today may present new challenges. Approach them with confidence.
+Love: Plan a fun date with your partner. Good times strengthen bonds.
+Life: Dedicate time to self-care. Prioritize your well-being.`;
+
+} else if (dayOfYear === 244) {
+    return `Career: Seek mentorship opportunities. Learning from others can be beneficial.
+Love: A surprise date could bring excitement to your relationship.
+Life: Consider journaling. Writing your thoughts can provide clarity and peace.`;
+
+} else if (dayOfYear === 245) {
+    return `Career: Focus on team collaboration. Working together leads to success.
+Love: Share your dreams with your partner. Open communication deepens bonds.
+Life: Take a break and enjoy a simple pleasure, like a favorite book or show.`;
+
+} else if (dayOfYear === 246) {
+    return `Career: Your hard work may soon be recognized. Stay committed.
+Love: Spend time nurturing your relationships. They need care to thrive.
+Life: Reflect on what brings you happiness. Understanding your joy is vital.`;
+
+} else if (dayOfYear === 247) {
+    return `Career: A potential promotion could be on the horizon. Stay focused.
+Love: Make time for each other amidst busy schedules. Quality time is important.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 248) {
+    return `Career: Networking can lead to beneficial connections. Don’t hesitate to reach out.
+Love: Plan a special date to reconnect with your partner.
+Life: Reflect on what makes you happy. Understanding your joy is essential.`;
+
+} else if (dayOfYear === 249) {
+    return `Career: Embrace new responsibilities. They may lead to growth.
+Love: A small act of kindness will strengthen your relationship.
+Life: Engage in a physical activity that you enjoy. Movement is vital for mental health.`;
+
+} else if (dayOfYear === 250) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Make time for each other amidst your busy schedules. Quality time matters.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 251) {
+    return `Career: Collaborate with colleagues to enhance project outcomes. Teamwork is key.
+Love: A surprise gesture will warm your partner's heart.
+Life: Spend time on a hobby that brings you joy. Nurturing your passions is important.`;
+
+} else if (dayOfYear === 252) {
+    return `Career: Today is ideal for brainstorming. Let your creativity shine.
+Love: Express your feelings to your partner. Vulnerability brings intimacy.
+Life: Engage in mindfulness practices. It can enhance your overall well-being.`;
+
+} else if (dayOfYear === 253) {
+    return `Career: Stay focused on your long-term goals. Patience is essential.
+Love: Plan a surprise outing for your partner. Spontaneity brings excitement.
+Life: Reflect on your personal growth. Recognize how far you've come.`;
+
+} else if (dayOfYear === 254) {
+    return `Career: A project may require extra attention. Tackle it head-on.
+Love: Spend time nurturing your relationships. They require care to thrive.
+Life: Explore new ideas through books or podcasts. Learning keeps your mind active.`;
+
+} else if (dayOfYear === 255) {
+    return `Career: Your dedication will be rewarded. Keep working hard.
+Love: A heartfelt conversation will strengthen your bond with a partner.
+Life: Consider starting a new routine that focuses on self-care.`;
+
+} else if (dayOfYear === 256) {
+    return `Career: Focus on completing tasks efficiently. Organization leads to success.
+Love: A small act of kindness will brighten your partner's day.
+Life: Spend time reflecting on your goals. Are they still aligned with your aspirations?`;
+
+} else if (dayOfYear === 257) {
+    return `Career: Seek out new networking opportunities. Connections can open doors.
+Love: A spontaneous outing could add excitement to your relationship.
+Life: Take time for self-reflection. Understanding your emotions can guide you.`;
+
+} else if (dayOfYear === 258) {
+    return `Career: Your hard work is about to pay off. Stay committed to your path.
+Love: Plan a thoughtful surprise for your partner. Romance matters.
+Life: Engage in creative activities. They can be therapeutic and fulfilling.`;
+
+} else if (dayOfYear === 259) {
+    return `Career: Avoid distractions and focus on your work today. It will lead to productivity.
+Love: Spend quality time with loved ones. Building connections is essential.
+Life: Consider practicing mindfulness or meditation. It can provide clarity.`;
+
+} else if (dayOfYear === 260) {
+    return `Career: Be proactive in seeking new opportunities. They may lead to growth.
+Love: A heartfelt letter or note will make your partner’s day.
+Life: Take time to appreciate the beauty around you. Nature can be grounding.`;
+
+} else if (dayOfYear === 261) {
+    return `Career: Collaborate with colleagues for better outcomes. Teamwork is essential.
+Love: Enjoy a quiet evening with your partner. Sometimes, simple moments are the best.
+Life: Reflect on your journey and the lessons learned along the way.`;
+
+} else if (dayOfYear === 262) {
+    return `Career: Stay focused on your projects. Distractions can derail progress.
+Love: A thoughtful gesture will enhance your connection with a partner.
+Life: Engage in a new hobby or interest. Exploring new passions can be fulfilling.`;
+
+} else if (dayOfYear === 263) {
+    return `Career: Today may present new challenges. Approach them with confidence.
+Love: Plan a fun date with your partner. Good times strengthen bonds.
+Life: Dedicate time to self-care. Prioritize your well-being.`;
+
+} else if (dayOfYear === 264) {
+    return `Career: Seek mentorship opportunities. Learning from others can be beneficial.
+Love: A surprise date could bring excitement to your relationship.
+Life: Consider journaling. Writing your thoughts can provide clarity and peace.`;
+
+} else if (dayOfYear === 265) {
+    return `Career: Focus on team collaboration. Working together leads to success.
+Love: Share your dreams with your partner. Open communication deepens bonds.
+Life: Take a break and enjoy a simple pleasure, like a favorite book or show.`;
+
+} else if (dayOfYear === 266) {
+    return `Career: Your hard work may soon be recognized. Stay committed.
+Love: Spend time nurturing your relationships. They need care to thrive.
+Life: Reflect on what brings you happiness. Understanding your joy is vital.`;
+
+} else if (dayOfYear === 267) {
+    return `Career: A potential promotion could be on the horizon. Stay focused.
+Love: Make time for each other amidst busy schedules. Quality time is important.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 268) {
+    return `Career: Networking can lead to beneficial connections. Don’t hesitate to reach out.
+Love: Plan a special date to reconnect with your partner.
+Life: Reflect on what makes you happy. Understanding your joy is essential.`;
+
+} else if (dayOfYear === 269) {
+    return `Career: Embrace new responsibilities. They may lead to growth.
+Love: A small act of kindness will strengthen your relationship.
+Life: Engage in a physical activity that you enjoy. Movement is vital for mental health.`;
+
+} else if (dayOfYear === 270) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Make time for each other amidst your busy schedules. Quality time matters.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 271) {
+    return `Career: Collaborate with colleagues to enhance project outcomes. Teamwork is key.
+Love: A surprise gesture will warm your partner's heart.
+Life: Spend time on a hobby that brings you joy. Nurturing your passions is important.`;
+
+} else if (dayOfYear === 272) {
+    return `Career: Today is ideal for brainstorming. Let your creativity shine.
+Love: Express your feelings to your partner. Vulnerability brings intimacy.
+Life: Engage in mindfulness practices. It can enhance your overall well-being.`;
+
+} else if (dayOfYear === 273) {
+    return `Career: Stay focused on your long-term goals. Patience is essential.
+Love: Plan a surprise outing for your partner. Spontaneity brings excitement.
+Life: Reflect on your personal growth. Recognize how far you've come.`;
+
+} else if (dayOfYear === 274) {
+    return `Career: A project may require extra attention. Tackle it head-on.
+Love: Spend time nurturing your relationships. They require care to thrive.
+Life: Explore new ideas through books or podcasts. Learning keeps your mind active.`;
+
+} else if (dayOfYear === 275) {
+    return `Career: Your dedication will be rewarded. Keep working hard.
+Love: A heartfelt conversation will strengthen your bond with a partner.
+Life: Consider starting a new routine that focuses on self-care.`;
+
+} else if (dayOfYear === 276) {
+    return `Career: Focus on completing tasks efficiently. Organization leads to success.
+Love: A small act of kindness will brighten your partner's day.
+Life: Spend time reflecting on your goals. Are they still aligned with your aspirations?`;
+
+} else if (dayOfYear === 277) {
+    return `Career: Seek out new networking opportunities. Connections can open doors.
+Love: A spontaneous outing could add excitement to your relationship.
+Life: Take time for self-reflection. Understanding your emotions can guide you.`;
+
+} else if (dayOfYear === 278) {
+    return `Career: Your hard work is about to pay off. Stay committed to your path.
+Love: Plan a thoughtful surprise for your partner. Romance matters.
+Life: Engage in creative activities. They can be therapeutic and fulfilling.`;
+
+} else if (dayOfYear === 279) {
+    return `Career: Avoid distractions and focus on your work today. It will lead to productivity.
+Love: Spend quality time with loved ones. Building connections is essential.
+Life: Consider practicing mindfulness or meditation. It can provide clarity.`;
+
+} else if (dayOfYear === 280) {
+    return `Career: Be proactive in seeking new opportunities. They may lead to growth.
+Love: A heartfelt letter or note will make your partner’s day.
+Life: Take time to appreciate the beauty around you. Nature can be grounding.`;
+
+} else if (dayOfYear === 281) {
+    return `Career: Collaborate with colleagues for better outcomes. Teamwork is essential.
+Love: Enjoy a quiet evening with your partner. Sometimes, simple moments are the best.
+Life: Reflect on your journey and the lessons learned along the way.`;
+
+} else if (dayOfYear === 282) {
+    return `Career: Stay focused on your projects. Distractions can derail progress.
+Love: A thoughtful gesture will enhance your connection with a partner.
+Life: Engage in a new hobby or interest. Exploring new passions can be fulfilling.`;
+
+} else if (dayOfYear === 283) {
+    return `Career: Today may present new challenges. Approach them with confidence.
+Love: Plan a fun date with your partner. Good times strengthen bonds.
+Life: Dedicate time to self-care. Prioritize your well-being.`;
+
+} else if (dayOfYear === 284) {
+    return `Career: Seek mentorship opportunities. Learning from others can be beneficial.
+Love: A surprise date could bring excitement to your relationship.
+Life: Consider journaling. Writing your thoughts can provide clarity and peace.`;
+
+} else if (dayOfYear === 285) {
+    return `Career: Focus on team collaboration. Working together leads to success.
+Love: Share your dreams with your partner. Open communication deepens bonds.
+Life: Take a break and enjoy a simple pleasure, like a favorite book or show.`;
+
+} else if (dayOfYear === 286) {
+    return `Career: Your hard work may soon be recognized. Stay committed.
+Love: Spend time nurturing your relationships. They need care to thrive.
+Life: Reflect on what brings you happiness. Understanding your joy is vital.`;
+
+} else if (dayOfYear === 287) {
+    return `Career: A potential promotion could be on the horizon. Stay focused.
+Love: Make time for each other amidst busy schedules. Quality time is important.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 288) {
+    return `Career: Networking can lead to beneficial connections. Don’t hesitate to reach out.
+Love: Plan a special date to reconnect with your partner.
+Life: Reflect on what makes you happy. Understanding your joy is essential.`;
+
+} else if (dayOfYear === 289) {
+    return `Career: Embrace new responsibilities. They may lead to growth.
+Love: A small act of kindness will strengthen your relationship.
+Life: Engage in a physical activity that you enjoy. Movement is vital for mental health.`;
+
+} else if (dayOfYear === 290) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Make time for each other amidst your busy schedules. Quality time matters.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 291) {
+    return `Career: Collaborate with colleagues to enhance project outcomes. Teamwork is key.
+Love: A surprise gesture will warm your partner's heart.
+Life: Spend time on a hobby that brings you joy. Nurturing your passions is important.`;
+
+} else if (dayOfYear === 292) {
+    return `Career: Today is ideal for brainstorming. Let your creativity shine.
+Love: Express your feelings to your partner. Vulnerability brings intimacy.
+Life: Engage in mindfulness practices. It can enhance your overall well-being.`;
+
+} else if (dayOfYear === 293) {
+    return `Career: Stay focused on your long-term goals. Patience is essential.
+Love: Plan a surprise outing for your partner. Spontaneity brings excitement.
+Life: Reflect on your personal growth. Recognize how far you've come.`;
+
+} else if (dayOfYear === 294) {
+    return `Career: A project may require extra attention. Tackle it head-on.
+Love: Spend time nurturing your relationships. They require care to thrive.
+Life: Explore new ideas through books or podcasts. Learning keeps your mind active.`;
+
+} else if (dayOfYear === 295) {
+    return `Career: Your dedication will be rewarded. Keep working hard.
+Love: A heartfelt conversation will strengthen your bond with a partner.
+Life: Consider starting a new routine that focuses on self-care.`;
+
+} else if (dayOfYear === 296) {
+    return `Career: Focus on completing tasks efficiently. Organization leads to success.
+Love: A small act of kindness will brighten your partner's day.
+Life: Spend time reflecting on your goals. Are they still aligned with your aspirations?`;
+
+} else if (dayOfYear === 297) {
+    return `Career: Seek out new networking opportunities. Connections can open doors.
+Love: A spontaneous outing could add excitement to your relationship.
+Life: Take time for self-reflection. Understanding your emotions can guide you.`;
+
+} else if (dayOfYear === 298) {
+    return `Career: Your hard work is about to pay off. Stay committed to your path.
+Love: Plan a thoughtful surprise for your partner. Romance matters.
+Life: Engage in creative activities. They can be therapeutic and fulfilling.`;
+
+} else if (dayOfYear === 299) {
+    return `Career: Avoid distractions and focus on your work today. It will lead to productivity.
+Love: Spend quality time with loved ones. Building connections is essential.
+Life: Consider practicing mindfulness or meditation. It can provide clarity.`;
+
+} else if (dayOfYear === 300) {
+    return `Career: Be proactive in seeking new opportunities. They may lead to growth.
+Love: A heartfelt letter or note will make your partner’s day.
+Life: Take time to appreciate the beauty around you. Nature can be grounding.`;
+
+} else if (dayOfYear === 301) {
+    return `Career: Collaborate with colleagues for better outcomes. Teamwork is essential.
+Love: Enjoy a quiet evening with your partner. Sometimes, simple moments are the best.
+Life: Reflect on your journey and the lessons learned along the way.`;
+
+} else if (dayOfYear === 302) {
+    return `Career: Stay focused on your projects. Distractions can derail progress.
+Love: A thoughtful gesture will enhance your connection with a partner.
+Life: Engage in a new hobby or interest. Exploring new passions can be fulfilling.`;
+
+} else if (dayOfYear === 303) {
+    return `Career: Today may present new challenges. Approach them with confidence.
+Love: Plan a fun date with your partner. Good times strengthen bonds.
+Life: Dedicate time to self-care. Prioritize your well-being.`;
+
+} else if (dayOfYear === 304) {
+    return `Career: Seek mentorship opportunities. Learning from others can be beneficial.
+Love: A surprise date could bring excitement to your relationship.
+Life: Consider journaling. Writing your thoughts can provide clarity and peace.`;
+
+} else if (dayOfYear === 305) {
+    return `Career: Focus on team collaboration. Working together leads to success.
+Love: Share your dreams with your partner. Open communication deepens bonds.
+Life: Take a break and enjoy a simple pleasure, like a favorite book or show.`;
+
+} else if (dayOfYear === 306) {
+    return `Career: Your hard work may soon be recognized. Stay committed.
+Love: Spend time nurturing your relationships. They need care to thrive.
+Life: Reflect on what brings you happiness. Understanding your joy is vital.`;
+
+} else if (dayOfYear === 307) {
+    return `Career: A potential promotion could be on the horizon. Stay focused.
+Love: Make time for each other amidst busy schedules. Quality time is important.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 308) {
+    return `Career: Networking can lead to beneficial connections. Don’t hesitate to reach out.
+Love: Plan a special date to reconnect with your partner.
+Life: Reflect on what makes you happy. Understanding your joy is essential.`;
+
+} else if (dayOfYear === 309) {
+    return `Career: Embrace new responsibilities. They may lead to growth.
+Love: A small act of kindness will strengthen your relationship.
+Life: Engage in a physical activity that you enjoy. Movement is vital for mental health.`;
+
+} else if (dayOfYear === 310) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Make time for each other amidst your busy schedules. Quality time matters.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 311) {
+    return `Career: Collaborate with colleagues to enhance project outcomes. Teamwork is key.
+Love: A surprise gesture will warm your partner's heart.
+Life: Spend time on a hobby that brings you joy. Nurturing your passions is important.`;
+
+} else if (dayOfYear === 312) {
+    return `Career: Today is ideal for brainstorming. Let your creativity shine.
+Love: Express your feelings to your partner. Vulnerability brings intimacy.
+Life: Engage in mindfulness practices. It can enhance your overall well-being.`;
+
+} else if (dayOfYear === 313) {
+    return `Career: Stay focused on your long-term goals. Patience is essential.
+Love: Plan a surprise outing for your partner. Spontaneity brings excitement.
+Life: Reflect on your personal growth. Recognize how far you've come.`;
+
+} else if (dayOfYear === 314) {
+    return `Career: A project may require extra attention. Tackle it head-on.
+Love: Spend time nurturing your relationships. They require care to thrive.
+Life: Explore new ideas through books or podcasts. Learning keeps your mind active.`;
+
+} else if (dayOfYear === 315) {
+    return `Career: Your dedication will be rewarded. Keep working hard.
+Love: A heartfelt conversation will strengthen your bond with a partner.
+Life: Consider starting a new routine that focuses on self-care.`;
+
+} else if (dayOfYear === 316) {
+    return `Career: Focus on completing tasks efficiently. Organization leads to success.
+Love: A small act of kindness will brighten your partner's day.
+Life: Spend time reflecting on your goals. Are they still aligned with your aspirations?`;
+
+} else if (dayOfYear === 317) {
+    return `Career: Seek out new networking opportunities. Connections can open doors.
+Love: A spontaneous outing could add excitement to your relationship.
+Life: Take time for self-reflection. Understanding your emotions can guide you.`;
+
+} else if (dayOfYear === 318) {
+    return `Career: Your hard work is about to pay off. Stay committed to your path.
+Love: Plan a thoughtful surprise for your partner. Romance matters.
+Life: Engage in creative activities. They can be therapeutic and fulfilling.`;
+
+} else if (dayOfYear === 319) {
+    return `Career: Avoid distractions and focus on your work today. It will lead to productivity.
+Love: Spend quality time with loved ones. Building connections is essential.
+Life: Consider practicing mindfulness or meditation. It can provide clarity.`;
+
+} else if (dayOfYear === 320) {
+    return `Career: Be proactive in seeking new opportunities. They may lead to growth.
+Love: A heartfelt letter or note will make your partner’s day.
+Life: Take time to appreciate the beauty around you. Nature can be grounding.`;
+
+} else if (dayOfYear === 321) {
+    return `Career: Collaborate with colleagues for better outcomes. Teamwork is essential.
+Love: Enjoy a quiet evening with your partner. Sometimes, simple moments are the best.
+Life: Reflect on your journey and the lessons learned along the way.`;
+
+} else if (dayOfYear === 322) {
+    return `Career: Stay focused on your projects. Distractions can derail progress.
+Love: A thoughtful gesture will enhance your connection with a partner.
+Life: Engage in a new hobby or interest. Exploring new passions can be fulfilling.`;
+
+} else if (dayOfYear === 323) {
+    return `Career: Today may present new challenges. Approach them with confidence.
+Love: Plan a fun date with your partner. Good times strengthen bonds.
+Life: Dedicate time to self-care. Prioritize your well-being.`;
+
+} else if (dayOfYear === 324) {
+    return `Career: Seek mentorship opportunities. Learning from others can be beneficial.
+Love: A surprise date could bring excitement to your relationship.
+Life: Consider journaling. Writing your thoughts can provide clarity and peace.`;
+
+} else if (dayOfYear === 325) {
+    return `Career: Focus on team collaboration. Working together leads to success.
+Love: Share your dreams with your partner. Open communication deepens bonds.
+Life: Take a break and enjoy a simple pleasure, like a favorite book or show.`;
+
+} else if (dayOfYear === 326) {
+    return `Career: Your hard work may soon be recognized. Stay committed.
+Love: Spend time nurturing your relationships. They need care to thrive.
+Life: Reflect on what brings you happiness. Understanding your joy is vital.`;
+
+} else if (dayOfYear === 327) {
+    return `Career: A potential promotion could be on the horizon. Stay focused.
+Love: Make time for each other amidst busy schedules. Quality time is important.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 328) {
+    return `Career: Networking can lead to beneficial connections. Don’t hesitate to reach out.
+Love: Plan a special date to reconnect with your partner.
+Life: Reflect on what makes you happy. Understanding your joy is essential.`;
+
+} else if (dayOfYear === 329) {
+    return `Career: Embrace new responsibilities. They may lead to growth.
+Love: A small act of kindness will strengthen your relationship.
+Life: Engage in a physical activity that you enjoy. Movement is vital for mental health.`;
+
+} else if (dayOfYear === 330) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Make time for each other amidst your busy schedules. Quality time matters.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 331) {
+    return `Career: Collaborate with colleagues to enhance project outcomes. Teamwork is key.
+Love: A surprise gesture will warm your partner's heart.
+Life: Spend time on a hobby that brings you joy. Nurturing your passions is important.`;
+
+} else if (dayOfYear === 332) {
+    return `Career: Today is ideal for brainstorming. Let your creativity shine.
+Love: Express your feelings to your partner. Vulnerability brings intimacy.
+Life: Engage in mindfulness practices. It can enhance your overall well-being.`;
+
+} else if (dayOfYear === 333) {
+    return `Career: Stay focused on your long-term goals. Patience is essential.
+Love: Plan a surprise outing for your partner. Spontaneity brings excitement.
+Life: Reflect on your personal growth. Recognize how far you've come.`;
+
+} else if (dayOfYear === 334) {
+    return `Career: A project may require extra attention. Tackle it head-on.
+Love: Spend time nurturing your relationships. They require care to thrive.
+Life: Explore new ideas through books or podcasts. Learning keeps your mind active.`;
+
+} else if (dayOfYear === 335) {
+    return `Career: Your dedication will be rewarded. Keep working hard.
+Love: A heartfelt conversation will strengthen your bond with a partner.
+Life: Consider starting a new routine that focuses on self-care.`;
+
+} else if (dayOfYear === 336) {
+    return `Career: Focus on completing tasks efficiently. Organization leads to success.
+Love: A small act of kindness will brighten your partner's day.
+Life: Spend time reflecting on your goals. Are they still aligned with your aspirations?`;
+
+} else if (dayOfYear === 337) {
+    return `Career: Seek out new networking opportunities. Connections can open doors.
+Love: A spontaneous outing could add excitement to your relationship.
+Life: Take time for self-reflection. Understanding your emotions can guide you.`;
+
+} else if (dayOfYear === 338) {
+    return `Career: Your hard work is about to pay off. Stay committed to your path.
+Love: Plan a thoughtful surprise for your partner. Romance matters.
+Life: Engage in creative activities. They can be therapeutic and fulfilling.`;
+
+} else if (dayOfYear === 339) {
+    return `Career: Avoid distractions and focus on your work today. It will lead to productivity.
+Love: Spend quality time with loved ones. Building connections is essential.
+Life: Consider practicing mindfulness or meditation. It can provide clarity.`;
+
+} else if (dayOfYear === 340) {
+    return `Career: Be proactive in seeking new opportunities. They may lead to growth.
+Love: A heartfelt letter or note will make your partner’s day.
+Life: Take time to appreciate the beauty around you. Nature can be grounding.`;
+
+} else if (dayOfYear === 341) {
+    return `Career: Collaborate with colleagues for better outcomes. Teamwork is essential.
+Love: Enjoy a quiet evening with your partner. Sometimes, simple moments are the best.
+Life: Reflect on your journey and the lessons learned along the way.`;
+
+} else if (dayOfYear === 342) {
+    return `Career: Stay focused on your projects. Distractions can derail progress.
+Love: A thoughtful gesture will enhance your connection with a partner.
+Life: Engage in a new hobby or interest. Exploring new passions can be fulfilling.`;
+
+} else if (dayOfYear === 343) {
+    return `Career: Today may present new challenges. Approach them with confidence.
+Love: Plan a fun date with your partner. Good times strengthen bonds.
+Life: Dedicate time to self-care. Prioritize your well-being.`;
+
+} else if (dayOfYear === 344) {
+    return `Career: Seek mentorship opportunities. Learning from others can be beneficial.
+Love: A surprise date could bring excitement to your relationship.
+Life: Consider journaling. Writing your thoughts can provide clarity and peace.`;
+
+} else if (dayOfYear === 345) {
+    return `Career: Focus on team collaboration. Working together leads to success.
+Love: Share your dreams with your partner. Open communication deepens bonds.
+Life: Take a break and enjoy a simple pleasure, like a favorite book or show.`;
+
+} else if (dayOfYear === 346) {
+    return `Career: Your hard work may soon be recognized. Stay committed.
+Love: Spend time nurturing your relationships. They need care to thrive.
+Life: Reflect on what brings you happiness. Understanding your joy is vital.`;
+
+} else if (dayOfYear === 347) {
+    return `Career: A potential promotion could be on the horizon. Stay focused.
+Love: Make time for each other amidst busy schedules. Quality time is important.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 348) {
+    return `Career: Networking can lead to beneficial connections. Don’t hesitate to reach out.
+Love: Plan a special date to reconnect with your partner.
+Life: Reflect on what makes you happy. Understanding your joy is essential.`;
+
+} else if (dayOfYear === 349) {
+    return `Career: Embrace new responsibilities. They may lead to growth.
+Love: A small act of kindness will strengthen your relationship.
+Life: Engage in a physical activity that you enjoy. Movement is vital for mental health.`;
+
+} else if (dayOfYear === 350) {
+    return `Career: A potential promotion could be on the horizon. Stay focused and diligent.
+Love: Make time for each other amidst your busy schedules. Quality time matters.
+Life: Practice gratitude. Acknowledging the good in your life can shift your perspective.`;
+
+} else if (dayOfYear === 351) {
+    return `Career: Collaborate with colleagues to enhance project outcomes. Teamwork is key.
+Love: A surprise gesture will warm your partner's heart.
+Life: Spend time on a hobby that brings you joy. Nurturing your passions is important.`;
+
+} else if (dayOfYear === 352) {
+    return `Career: Today is ideal for brainstorming. Let your creativity shine.
+Love: Express your feelings to your partner. Vulnerability brings intimacy.
+Life: Engage in mindfulness practices. It can enhance your overall well-being.`;
+
+} else if (dayOfYear === 353) {
+    return `Career: Stay focused on your long-term goals. Patience is essential.
+Love: Plan a surprise outing for your partner. Spontaneity brings excitement.
+Life: Reflect on your personal growth. Recognize how far you've come.`;
+
+} else if (dayOfYear === 354) {
+    return `Career: A project may require extra attention. Tackle it head-on.
+Love: Spend time nurturing your relationships. They require care to thrive.
+Life: Explore new ideas through books or podcasts. Learning keeps your mind active.`;
+
+} else if (dayOfYear === 355) {
+    return `Career: Your dedication will be rewarded. Keep working hard.
+Love: A heartfelt conversation will strengthen your bond with a partner.
+Life: Consider starting a new routine that focuses on self-care.`;
+
+} else if (dayOfYear === 356) {
+    return `Career: Focus on completing tasks efficiently. Organization leads to success.
+Love: A small act of kindness will brighten your partner's day.
+Life: Spend time reflecting on your goals. Are they still aligned with your aspirations?`;
+
+} else if (dayOfYear === 357) {
+    return `Career: Seek out new networking opportunities. Connections can open doors.
+Love: A spontaneous outing could add excitement to your relationship.
+Life: Take time for self-reflection. Understanding your emotions can guide you.`;
+
+} else if (dayOfYear === 358) {
+    return `Career: Your hard work is about to pay off. Stay committed to your path.
+Love: Plan a thoughtful surprise for your partner. Romance matters.
+Life: Engage in creative activities. They can be therapeutic and fulfilling.`;
+
+} else if (dayOfYear === 359) {
+    return `Career: Avoid distractions and focus on your work today. It will lead to productivity.
+Love: Spend quality time with loved ones. Building connections is essential.
+Life: Consider practicing mindfulness or meditation. It can provide clarity.`;
+
+} else if (dayOfYear === 360) {
+    return `Career: Be proactive in seeking new opportunities. They may lead to growth.
+Love: A heartfelt letter or note will make your partner’s day.
+Life: Take time to appreciate the beauty around you. Nature can be grounding.`;
+
+} else if (dayOfYear === 361) {
+    return `Career: Collaborate with colleagues for better outcomes. Teamwork is essential.
+Love: Enjoy a quiet evening with your partner. Sometimes, simple moments are the best.
+Life: Reflect on your journey and the lessons learned along the way.`;
+}
+ else if (dayOfYear === 365) {
+        return `Career: As the year closes, reflect on your professional achievements. New opportunities await in the new year.
+Love: Spend quality time with your partner. Deepen your connection through meaningful conversation.
+Life: Reflect on the past year and set intentions for the future. Growth and self-reflection will bring peace.`;
+    } else {
+        return "No prediction available for this date.";
+    }
+    }
+        
+
+        // Main function to display zodiac sign and prediction
+        function showZodiacAndPrediction() {
+            const dobInput = document.getElementById("dob").value;
+            if (!dobInput) {
+                document.getElementById("result").innerHTML = "Please enter your date of birth.";
+                document.getElementById("prediction").innerHTML = "";
+                return;
+            }
+
+            const birthDate = new Date(dobInput);
+            const day = birthDate.getDate();
+            const month = birthDate.getMonth() + 1;
+
+            const zodiacSign = getZodiacSign(day, month);
+            document.getElementById("result").innerHTML = `Your zodiac sign is <strong>${zodiacSign}</strong>.`;
+
+            // Calculate the day of the year for prediction
+            const startOfYear = new Date(birthDate.getFullYear(), 0, 0);
+            const diff = birthDate - startOfYear;
+            const oneDay = 1000 * 60 * 60 * 24;
+            const dayOfYear = Math.floor(diff / oneDay);
+
+            // Display prediction
+            const prediction = getPrediction(dayOfYear);
+            document.getElementById("prediction").innerHTML = `<strong>Prediction:</strong> ${prediction}`;
+        }
+
+
+        function calculateLove() {
+            var name1 = document.getElementById("name1").value;
+            var name2 = document.getElementById("name2").value;
+
+            if (name1 === "" || name2 === "") {
+                alert("Please enter both names!");
+                return;
+            }
+
+            // Generate a random love percentage
+            var loveScore = Math.floor(Math.random() * 100) + 1;
+
+            document.getElementById("loveResult").innerText = name1 + " and " + name2 + " have a love compatibility of " + loveScore + "%!";
+        }
+    </script>
+
+</body>
+</html>
+
